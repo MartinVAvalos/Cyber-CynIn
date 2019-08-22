@@ -1,0 +1,46 @@
+$primary: #00818a !default;
+$primaryVariant: #b1eaef !default;
+$alternative: #edf2f4 !default;
+$alternativeVariant: #323232 !default;
+$secondary: #b62417 !default;
+$secondaryVariant: #ffced1 !default;
+
+.container {
+    height: 80vh;
+    width: auto;
+    // background: red;
+}
+
+#logo {
+    width: 40%;
+    font-size: 3em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: quantum;
+    // background: blue;
+}
+
+.title {
+    padding-left: 3.2%;
+    color: rgb(50, 50, 50);
+    font-size: 1.6em;
+    font-weight: 800;
+    font-family: lato;
+}
+
+.users {
+    // background-color: #b62417;
+}
+
+.events {
+    // background-color: $secondaryVariant;
+}
+
+.container-fluid {
+    height: 250%;
+    padding: 20px;
+    background: $primary;
+    border: 2px groove $alternative;
+    border-radius: 25px;
+}

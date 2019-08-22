@@ -1,0 +1,13 @@
+$primary: #00818a !default;
+$primaryVariant: #b1eaef !default;
+$alternative: #edf2f4 !default;
+$secondary: #b62417 !default;
+$secondaryVariant: #ffced1 !default;
+
+html body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to right bottom, #00818a, #589ca7, #8cb8c2, #bdd4dc, #edf2f4);
+}

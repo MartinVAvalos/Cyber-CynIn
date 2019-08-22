@@ -1,0 +1,20 @@
+$primary: #00818a !default;
+$primaryVariant: #b1eaef !default;
+$alternative: #edf2f4 !default;
+$alternativeVariant: #323232 !default;
+$secondary: #b62417 !default;
+$secondaryVariant: #ffced1 !default;
+
+.bg-light {
+    background-color: $alternative !important;
+}
+
+.navbar {
+    // border: #edf2f4 solid;
+    // border-width: 0 0 2px 0;
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, .2);
+}
+
+.navbar-brand {
+    font-family: quantum;
+}
