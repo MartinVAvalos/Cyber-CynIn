@@ -1,0 +1,98 @@
+$mainColor: #17bebb;
+
+.title{
+  margin-top: 3%;
+  margin-bottom: 2%;
+ text-align:center;
+
+  color: white;
+  font-size: 3em;
+}
+body{
+  background-color: $mainColor;
+  font-family: "Times", Times, serif;
+  height: 100%;
+}
+.container-center{
+  width: 57vw;
+  height:53vh;
+  background: white;
+  margin-left: 20%;
+  border-radius: 30px;
+  padding-bottom:5.5vh;
+  
+}
+form{
+  padding-left: 5vw;
+  padding-top:7vh;
+}
+input{
+ 
+  line-height:2em;
+  width: 48vw;
+  border: none;
+  border-bottom: 1px solid grey;
+  opacity: 0.7;
+}
+span{
+  display: block;
+}
+.sign{
+  padding-top:8%;
+  padding-left:10%;
+  
+}
+#red{
+  display: block;
+  background-color: blue;
+  width:80%;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 15px 32px;
+    font-size: 1.2em;
+
+}
+.space{
+  padding: 2%;
+}
+.social{
+  display: inline;
+  margin-left: 25%;
+  
+}
+
+
+
+#need{
+color: white;
+font-size: 1em;
+padding-top: 2%;
+
+}
+.sentence{
+ text-align: center;
+}
+.whiter{
+  display: inline;
+  font-weight: bolder;
+  font-size: 1.4em;
+}
+
+// /***** For Tablets *******/
+// @media screen and (min-width: 480px) {
+//   .container-center{
+//     width: 70%;
+//   }
+//   #login-btn{
+//     padding: 0.8em 0;
+//     font-size: 1.2em;
+//   }
+// }
+
+// /***** For Desktop Monitors *******/
+// @media screen and (min-width: 768px) {
+//    .container-center{
+//     width: 500px;
+//   }
+// }
