@@ -12,6 +12,7 @@ export class SignUpComponent implements OnInit {
   htmlEmail: String;
   htmlFName: String;
   htmlLName: String;
+  htmlStudentID: String;
   htmlPassword: String;
 
   constructor(

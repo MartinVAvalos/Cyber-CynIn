@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthService {
-    value: string;
     token: string;
     constructor(private router: Router) {
 
@@ -20,16 +19,21 @@ export class AuthService {
     loginUser(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(
-
+            response => {
+                // implement tokens
+                this.router.navigate(['/home']);
+            }
         )
         .catch(
           error => console.log("Error: User failed to sign in \n" + error)
         );
     };
 
-    // getUID() {
     
-    // };
+
+    getUID() {
+        return firebase.auth().currentUser.uid;
+    };
 
     logOut() {
         

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +15,7 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { FixTimeComponent } from './components/fix-time/fix-time.component';
 import { SuperProfileComponent } from './components/super-profile/super-profile.component';
+import { FireService } from './components/services/fire.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,11 @@ import { SuperProfileComponent } from './components/super-profile/super-profile.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [FireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
