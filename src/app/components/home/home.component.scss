@@ -1,9 +1,9 @@
 $primary: #00818a !default;
 $primaryVariant: #b1eaef !default;
-$alternative: #edf2f4 !default;
-$alternativeVariant: #323232 !default;
-$secondary: #b62417 !default;
-$secondaryVariant: #ffced1 !default;
+$secondary: #edf2f4 !default;
+$secondaryVariant: #323232 !default;
+// $secondary: #b62417 !default;
+// $secondaryVariant: #ffced1 !default;
 
 .container {
     height: 80vh;
@@ -23,7 +23,7 @@ $secondaryVariant: #ffced1 !default;
 
 .title {
     padding-left: 3.2%;
-    color: rgb(50, 50, 50);
+    color: $secondaryVariant;
     font-size: 1.6em;
     font-weight: 800;
     font-family: lato;
@@ -41,6 +41,6 @@ $secondaryVariant: #ffced1 !default;
     height: 250%;
     padding: 20px;
     background: $primary;
-    border: 2px groove $alternative;
+    border: 2px groove $secondary;
     border-radius: 25px;
 }

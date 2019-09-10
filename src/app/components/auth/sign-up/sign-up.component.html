@@ -1,0 +1,43 @@
+<body>
+ 
+    <div class="title">
+   Welcome to CynIn
+    </div>
+      
+    <div class="container-center">
+   <form>
+     
+        <label for="id">Email</label>
+        <br>
+        <!--               ebfjhewicgewfigewuigfuiu                -->
+        <input 
+        type="email" 
+        name="htmlEmail" 
+        placeholder="Enter Email"
+        [(ngModel)]="htmlEmail">
+      
+        <label for="first">First Name</label>
+        <input 
+        type="text" 
+        name="htmlFName" 
+        placeholder="Enter First Name"
+        [(ngModel)]="htmlFName">
+
+        <label for="last">Last Name</label>
+        <input 
+        type="text" 
+        name="htmlLName" 
+        placeholder="Enter Last Name"
+        [(ngModel)]="htmlLName">
+     
+        <label for="password">Password</label>
+        <input 
+        type="password" 
+        name="htmlPassword"
+        placeholder="Password"
+        [(ngModel)]="htmlPassword">
+   </form>
+        <button (click)="onSignup()">Submit</button>
+    </div>
+  
+  </body>

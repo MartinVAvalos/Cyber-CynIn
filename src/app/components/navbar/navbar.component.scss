@@ -1,12 +1,12 @@
 $primary: #00818a !default;
 $primaryVariant: #b1eaef !default;
-$alternative: #edf2f4 !default;
-$alternativeVariant: #323232 !default;
-$secondary: #b62417 !default;
-$secondaryVariant: #ffced1 !default;
+$secondary: #edf2f4 !default;
+$secondaryVariant: #323232 !default;
+// $secondary: #b62417 !default;
+// $secondaryVariant: #ffced1 !default;
 
 .bg-light {
-    background-color: $alternative !important;
+    background-color: $secondary !important;
 }
 
 .navbar {

@@ -1,4 +1,9 @@
-$mainColor: #17bebb;
+$primary: #00818a !default;
+$primaryVariant: #b1eaef !default;
+$secondary: #edf2f4 !default;
+$secondaryVariant: #323232 !default;
+// $secondary: #b62417 !default;
+// $secondaryVariant: #ffced1 !default;
 
 .title{
   margin-top: 3%;
@@ -8,8 +13,9 @@ $mainColor: #17bebb;
   color: white;
   font-size: 3em;
 }
+
 body{
-  background-color: $mainColor;
+  background-color: $secondaryVariant;
   font-family: "Times", Times, serif;
   height: 100%;
 }
