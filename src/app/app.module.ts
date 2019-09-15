@@ -17,6 +17,8 @@ import { FixTimeComponent } from './components/fix-time/fix-time.component';
 import { SuperProfileComponent } from './components/super-profile/super-profile.component';
 import { FireService } from './components/services/fire.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,

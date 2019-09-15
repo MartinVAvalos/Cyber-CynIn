@@ -1,53 +1,45 @@
 import { Injectable } from '@angular/core';
-import { Headers, Response, Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
-import { Server } from 'selenium-webdriver/safari';
-import {HttpClientModule} from '@angular/common/http'
-import { database } from 'firebase';
-// import {AuthService} from './../components/auth/auth.service';
-import 'rxjs';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { User } from '../models/user';
+import { Headers, Http, Response } from '@angular/http'
+
+
+import {Observable} from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { User } from '../models/user';
+import { map } from 'rxjs/operators';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+
 
 @Injectable()
-export class FireService {
+export class FireService{
   url:string='https://cyber-cynin.firebaseio.com/';
   
-    token: string = "1"
-    constructor(
-      private http: Http,
-      private user: User,
-      private uidFromUser: AuthService
-      ) {}
+  constructor(
+    private http: Http,
+    private uidFromUser: AuthService
+    ) {}
 
-    storeServers(servers: any){
-      // const token = this.uidFromUser.getToken()
+  storeServers(servers: any){
+    
+     return this.http.put(this.url+ this.uidFromUser.getUID() +'/data.json',servers);
 
-       return this.http.put(this.url+ this.uidFromUser.getUID() +'/data.json',servers);
-
-    }
-    getlist(){
-      
-      return this.http.get(this.url+ this.uidFromUser.getUID() +'/data.json')
-      // .map(
-      //     (response: Response) => {
-      //       const data = response.json();
-      //       return data;
-      //     }
-      // )
-      .pipe(map((response: any) => {
-          response.json()
-          .catch(
-            (error: Response) => {
-              return Observable.throw(console.log(Response));
-            }
-          );
+  }
+  getlist(){
+    
+    return this.http.get(this.url+ this.uidFromUser.getUID() +'/data.json')
+    
+    .pipe(map((response: Response) => {
+      const data = response.json();
+      return data
+        
+      .catch(
+        (error: Response) => {
+          return Observable.throw(console.log(Response));
         }
-      ))
-    }
+      );
+      }
+    ))
+  }
 
-  
+
 
 }
