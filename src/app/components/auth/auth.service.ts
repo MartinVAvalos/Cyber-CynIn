@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { FireService } from '../services/fire.service';
 
 @Injectable()
 export class AuthService {
@@ -11,6 +12,12 @@ export class AuthService {
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(
+            () => {
+                console.log("ready to save info");
+                return "info saved";
+            }
+        )
         .catch (
             error => console.log(error)
         );

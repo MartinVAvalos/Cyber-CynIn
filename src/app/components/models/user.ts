@@ -3,6 +3,8 @@ export interface User {
     firstName: string;
     lastName: string;
     studentID: string
+    isSuper: boolean;
     totalTime?: string;
     lastLoginDay?: string;
+    lockedOut?: boolean;
 }

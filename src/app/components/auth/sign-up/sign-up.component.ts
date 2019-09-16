@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { FireService } from '../../services/fire.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,14 +11,16 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-  htmlEmail: String;
-  htmlFName: String;
-  htmlLName: String;
-  htmlStudentID: String;
-  htmlPassword: String;
+  htmlEmail: string;
+  htmlFName: string;
+  htmlLName: string;
+  htmlStudentID: string;
+  htmlPassword: string;
 
   constructor(
-    // private fire: FireserveServe
+    private fire: FireService,
+    private auth: AuthService,
+    private router: Router 
   ) { }
 
   ngOnInit() {
@@ -24,11 +28,13 @@ export class SignUpComponent implements OnInit {
 
   onSignup() {
     // inject fireserve service
+    this.auth.signupUser(this.htmlEmail, this.htmlPassword);
 
     // push form variable onto fireserve service
-
+    // this.fire.storeOnServers
 
     //navigate page router.route
+    this.router.navigate(['/login']);
   }
 
 }

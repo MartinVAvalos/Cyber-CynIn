@@ -16,6 +16,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { FixTimeComponent } from './components/fix-time/fix-time.component';
 import { SuperProfileComponent } from './components/super-profile/super-profile.component';
 import { FireService } from './components/services/fire.service';
+import { AuthService } from './components/auth/auth.service';
 
 
 
@@ -38,7 +39,7 @@ import { FireService } from './components/services/fire.service';
     HttpClientModule,
     HttpModule
   ],
-  providers: [FireService],
+  providers: [FireService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http'
+import { Headers, Http, Response } from '@angular/http';
+
+// import 
 
 
 import {Observable} from 'rxjs';
@@ -18,15 +20,14 @@ export class FireService{
     private uidFromUser: AuthService
     ) {}
 
-  storeServers(servers: any){
+  storeOnServers(servers: any){
     
      return this.http.put(this.url+ this.uidFromUser.getUID() +'/data.json',servers);
 
   }
-  getlist(){
+  getfromServers(){
     
     return this.http.get(this.url+ this.uidFromUser.getUID() +'/data.json')
-    
     .pipe(map((response: Response) => {
       const data = response.json();
       return data

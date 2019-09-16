@@ -12,4 +12,7 @@ export class FixTimeComponent implements OnInit {
   ngOnInit() {
   }
 
+  // <input type="date" name="bday">
+
+
 }
