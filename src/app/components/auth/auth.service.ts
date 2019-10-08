@@ -2,22 +2,22 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { FireService } from '../services/fire.service';
+import { User } from '../models/User';
+
 
 @Injectable()
 export class AuthService {
+
     token: string;
-    constructor(private router: Router) {
+    constructor(
+      
+        private router: Router) {           
 
     };
 
+   // studentID: string, fName: string, lName: string GOES IN MEthod
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        .then(
-            () => {
-                console.log("ready to save info");
-                return "info saved";
-            }
-        )
         .catch (
             error => console.log(error)
         );
