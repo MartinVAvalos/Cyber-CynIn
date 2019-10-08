@@ -4,7 +4,6 @@ export interface User {
     studentID: string;
     firstName: string;
     lastName: string;
-    isSuper?: boolean;
     totalTime?: string;
     lastLoginDay?: string;
     lockedOut?: boolean;

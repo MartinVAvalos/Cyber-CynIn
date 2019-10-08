@@ -4,10 +4,6 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FireService } from '../../services/fire.service';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/User';
-
-
 
 
 @Component({
@@ -17,7 +13,6 @@ import { User } from '../../models/User';
 })
 export class SignUpComponent implements OnInit {
 
-  user:User;
 
   htmlEmail: string;
   htmlFName: string;
@@ -27,13 +22,11 @@ export class SignUpComponent implements OnInit {
 
   
   constructor(
+    // private user: User,
     private fire: FireService,
     private auth: AuthService,
     private router: Router,
-    public userServ:UserService
-  ) { 
-        this.user=userServ.dummyModel(this.user);
-        //initialize variables then use them
+
   }
 
   ngOnInit() {
@@ -42,13 +35,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup() {
-   
-  this.auth.signupUser(this.htmlEmail, this.htmlPassword)
-// run after promise
-  setTimeout(()=>{ 
-    this.getNewInfo()
-    this.begin(); 
-  }, 2000);
 
 }
  
