@@ -24,7 +24,6 @@ export class SignUpComponent implements OnInit {
   htmlLName: string;
   htmlStudentID: string;
   htmlPassword: string;
-
   
   constructor(
     private fire: FireService,
