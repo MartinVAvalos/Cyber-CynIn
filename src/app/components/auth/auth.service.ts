@@ -28,7 +28,8 @@ export class AuthService {
         .then(
             response => {
                 // implement tokens
-                this.router.navigate(['/home']);
+                //Future: fix-time~ admin needed
+                this.router.navigate(['/userProfile']);
             }
         )
         .catch(

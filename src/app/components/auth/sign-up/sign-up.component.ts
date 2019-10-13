@@ -47,7 +47,7 @@ export class SignUpComponent implements OnInit {
   setTimeout(()=>{ 
     this.getNewInfo()
     this.begin(); 
-  }, 2000);
+  }, 1000);
 
 }
  
