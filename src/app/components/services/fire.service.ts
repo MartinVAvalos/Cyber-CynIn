@@ -34,7 +34,7 @@ export class FireService{
   }
   getfromServers(){
      //this.uidFromUser.getUID() this goes between url and /data.json
-    return this.http.get(this.url+'/data.json')
+    return this.http.get(this.url+this.uidFromUser.getUID() + '/data.json')
     .pipe(map((response: Response) => {
       const data = response.json();
       return data

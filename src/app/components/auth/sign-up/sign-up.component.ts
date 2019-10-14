@@ -32,7 +32,9 @@ export class SignUpComponent implements OnInit {
     public userServ:UserService
   ) { 
         this.user=userServ.dummyModel(this.user);
-        //initialize variables then use them
+        // initialize variables then use them
+    
+
   }
 
   ngOnInit() {

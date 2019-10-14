@@ -6,7 +6,7 @@ import { User } from '../models/User';
   providedIn: 'root'
 })
 export class UserService {
-  user:User;
+  
 
   constructor() {
    
@@ -21,8 +21,12 @@ export class UserService {
       studentID:'999',
       firstName:'eman',
       lastName:'fonseca',
-      
+      isSuper: false,
+      totalTime: 0,
+      timeTracked: 0,
+      lockedOut: false
     }
     return user;
   }
+
 }
