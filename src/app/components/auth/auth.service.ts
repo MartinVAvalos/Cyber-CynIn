@@ -18,6 +18,9 @@ export class AuthService {
    // studentID: string, fName: string, lName: string GOES IN MEthod
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
+        // .then(
+
+        // )
         .catch (
             error => console.log(error)
         );

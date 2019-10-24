@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
   onSignup() {
    
   this.auth.signupUser(this.htmlEmail, this.htmlPassword)
+  
 // run after promise
   setTimeout(()=>{ 
     this.getNewInfo()

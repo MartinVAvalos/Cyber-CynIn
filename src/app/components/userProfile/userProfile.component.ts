@@ -18,20 +18,22 @@ export class UserProfileComponent implements OnInit {
       private fire: FireService,
       private useServ: UserService
     ) {
-      this.user=useServ.dummyModel(this.user);
+      
   }
 
   ngOnInit() {
+    this.user=this.useServ.dummyModel(this.user);
   }
 
   onStartClock() {
     let time= this.createClock();
     this.savingStartTime();
 
-    this.fire.getfromServers().subscribe(
+    this.fire.getfromServers()
+    .subscribe(
       (server:User)=>{
         this.user=server;
-        console.log("old eman got :"+this.user);
+        console.log("old eman got :"+this.user.email);
       },
       (error)=> console.log("Problem getting your users from firebase error type: =>  "+error)
     );
