@@ -6,6 +6,7 @@ export interface User {
     lastName: string;
     isSuper?: boolean;
     totalTime?: number;
+    timeIn?: number;
     timeTracked?: number;
     lockedOut?: boolean;
 }
