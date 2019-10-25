@@ -15,7 +15,9 @@ export class UserProfileComponent implements OnInit {
   startClock: any;
   user: User;
   jar: number = 0;
-  timeforToday: number=0;
+  timeforToday: number = 0;
+  display: string;
+  display2: string;
 
 
   constructor(
@@ -27,9 +29,19 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    
 
+    this.fire.getfromServers()
+      .subscribe( 
+        (server: User) => {
+          this.user = server;
+          this.display=this.myconvert(this.user.totalTime);
+          this.currentDisplay(this.user.timeIn);
+
+        }
+
+      )
   }
+  
 
   onStartClock() {
     let time = this.createClock();
@@ -63,40 +75,24 @@ export class UserProfileComponent implements OnInit {
   }
 
   onEndClock() { // click event 
-
     let time2 = this.createClock();
 
-
     this.fire.getfromServers()
-      .subscribe(
+      .subscribe( // loading user from fire service
         (server: User) => {
           this.user = server;
           // finding the difference in time
 
           this.timeforToday = time2 - Number(this.user.timeIn);
 
-          console.log("checking if total time is right "+this.timeforToday+ " also type "+typeof(this.timeforToday));
-
-
-          // up to here it works
-          
-
-           this.jar = this.user.totalTime;
-
-          console.log("checking if jar is working "+this.jar+ " also type "+typeof(this.jar));
-
-          this.user.totalTime = this.jar + this.timeforToday; 
-
-        
-
-          // times 100 to move decimal point
-          // totalTime needs to be saved
+          this.jar = this.user.totalTime;
+          this.user.totalTime = this.jar + this.timeforToday;
+          this.user.timeIn=0;
 
           this.fire.storeServers(this.user)
             .subscribe(
               (response) => {
                 console.log(this.user.totalTime + " totalTime saved");
-              //  time2=undefined;
 
                 this.router.navigate(['/home']);
               },
@@ -110,8 +106,49 @@ export class UserProfileComponent implements OnInit {
 
   }
 
+  myconvert(numTime:number):string{
+    numTime=numTime/100;
+    if(numTime >= 13){
+      numTime=numTime-12;
+
+      let mystring=numTime + " Hrs";
+      mystring=mystring.replace('.',':');
+
+      return mystring;
+    }
+    else{
+      let mystring=numTime + " Hrs";
+      mystring=mystring.replace('.',':');
+      return mystring;
+    }
+
+  }
+  truncateDecimals(number:number) {
+    return Math[number < 0 ? 'ceil' : 'floor'](number);
+};
+
+  currentDisplay(timeIn: number) {
+    let time3 = this.createClock(); //current time
+    let totalTempHours = time3 - Number(this.user.timeIn);
+    totalTempHours = this.truncateDecimals(totalTempHours)
+    this.display2=this.myconvert(totalTempHours);
+    
+
+  }
 
 }
+
+
+
+
+
+
+
+  
+     
+    
+
+
 
 
 
