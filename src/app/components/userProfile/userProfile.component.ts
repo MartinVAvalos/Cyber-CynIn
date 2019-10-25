@@ -14,6 +14,9 @@ export class UserProfileComponent implements OnInit {
 
   startClock: any;
   user: User;
+  jar: number = 0;
+  timeforToday: number=0;
+
 
   constructor(
     private fire: FireService,
@@ -24,20 +27,19 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.useServ.dummyModel(this.user);
+    
+
   }
 
   onStartClock() {
     let time = this.createClock();
-    this.savingStartTime();
+
 
     this.fire.getfromServers()
       .subscribe(
         (server: User) => {
           this.user = server;
-          // info is back now what
           this.user.timeIn = time;
-          // time is now in user locally still need to push user
           this.fire.storeServers(this.user)
             .subscribe(
               (response) => {
@@ -45,15 +47,12 @@ export class UserProfileComponent implements OnInit {
                 this.router.navigate(['/home']);
               },
 
-              (error) => console.log("problem when saving timeIn"+error)
+              (error) => console.log("problem when saving timeIn" + error)
             );
         },
         (error) => console.log("Problem getting your users from firebase error type: =>  " + error)
       );
 
-  }
-  savingStartTime() {
-    this.fire.storeServers(this.startClock.format("HHmm"));
   }
 
   createClock() {
@@ -63,5 +62,57 @@ export class UserProfileComponent implements OnInit {
     return temp;
   }
 
+  onEndClock() { // click event 
+
+    let time2 = this.createClock();
+
+
+    this.fire.getfromServers()
+      .subscribe(
+        (server: User) => {
+          this.user = server;
+          // finding the difference in time
+
+          this.timeforToday = time2 - Number(this.user.timeIn);
+
+          console.log("checking if total time is right "+this.timeforToday+ " also type "+typeof(this.timeforToday));
+
+
+          // up to here it works
+          
+
+           this.jar = this.user.totalTime;
+
+          console.log("checking if jar is working "+this.jar+ " also type "+typeof(this.jar));
+
+          this.user.totalTime = this.jar + this.timeforToday; 
+
+        
+
+          // times 100 to move decimal point
+          // totalTime needs to be saved
+
+          this.fire.storeServers(this.user)
+            .subscribe(
+              (response) => {
+                console.log(this.user.totalTime + " totalTime saved");
+              //  time2=undefined;
+
+                this.router.navigate(['/home']);
+              },
+
+              (error) => console.log("problem when saving timeout" + error)
+            );
+        },
+        (error) => console.log("Problem getting your users from firebase error type: =>  " + error)
+      );
+
+
+  }
+
 
 }
+
+
+
+

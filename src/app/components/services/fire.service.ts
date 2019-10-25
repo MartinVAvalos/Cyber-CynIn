@@ -34,6 +34,7 @@ export class FireService {
       .map(
         (response: Response) => {
           const data = response.json();
+          
           return data;
         }
       )

@@ -17,63 +17,62 @@ import { User } from '../../models/User';
 })
 export class SignUpComponent implements OnInit {
 
-  user:User;
+  user: User;
 
   htmlEmail: string;
   htmlFName: string;
   htmlLName: string;
   htmlStudentID: string;
   htmlPassword: string;
-  
+
   constructor(
     private fire: FireService,
     private auth: AuthService,
     private router: Router,
-    public userServ:UserService
-  ) { 
-        this.user=userServ.dummyModel(this.user);
-        // initialize variables then use them
-    
+    public userServ: UserService
+  ) {
+    this.user = userServ.dummyModel(this.user);
+    // initialize variables then use them
+
 
   }
 
   ngOnInit() {
-    
-   
+
+
   }
 
   onSignup() {
-   
-  this.auth.signupUser(this.htmlEmail, this.htmlPassword)
-  
-// run after promise
-  setTimeout(()=>{ 
-    this.getNewInfo()
-    this.begin(); 
-  }, 1000);
 
-}
- 
+    this.auth.signupUser(this.htmlEmail, this.htmlPassword)
 
-begin(){
-  console.log("starting");
-  this.fire.storeServers(this.user)
-  .subscribe(
-    (response) =>{
-      console.log("save complete!");
-      this.router.navigate(['/login']);
-    },
-    (error) =>console.log(error)
-    );
-}
+    // run after promise
+    setTimeout(() => {
+      this.getNewInfo();
+      this.begin();
+    }, 1000);
 
-getNewInfo() {
-  this.user ={
-    email:this.htmlEmail,
-    studentID:this.htmlStudentID,
-    firstName:this.htmlFName,
-    lastName:this.htmlLName,
   }
-}
+
+
+  begin() {
+    console.log("starting");
+    this.fire.storeServers(this.user)
+      .subscribe(
+        (response) => {
+          console.log("save complete!");
+          this.router.navigate(['/login']);
+        },
+        (error) => console.log(error)
+      );
+  }
+
+  getNewInfo() {
+
+    this.user.email = this.htmlEmail;
+    this.user.studentID = this.htmlStudentID;
+    this.user.firstName = this.htmlFName;
+    this.user.lastName = this.htmlLName;
+  }
 
 }
