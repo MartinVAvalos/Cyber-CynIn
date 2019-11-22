@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { auth } from 'firebase';
 import { User } from '../../models/User';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +15,17 @@ import { User } from '../../models/User';
 export class LoginComponent implements OnInit {
 
   user:User;
-
   htmlEmail: string;
   htmlPassword: string;
-
+  
   constructor(
     private fire: FireService,
     private auth: AuthService,
+    private userServ:UserService,
     private router: Router
-  ) { }
+  ) {
+    this.user=this.userServ.dummyModel();
+  }
 
   ngOnInit() {
   }

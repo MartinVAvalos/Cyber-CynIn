@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     public userServ: UserService
   ) {
-    this.user = userServ.dummyModel(this.user);
+    this.user = userServ.dummyModel();
     // initialize variables then use them
 
 

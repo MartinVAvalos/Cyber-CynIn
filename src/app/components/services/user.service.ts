@@ -6,14 +6,14 @@ import { User } from '../models/User';
 })
 export class UserService {
 
-
+  user:User;
   constructor() {
 
 
   }
 
-  dummyModel(user: User) {
-    user = {
+  dummyModel():User{
+    return this.user = {
       email: 'blank',
       studentID: '999',
       firstName: 'eman',
@@ -24,7 +24,7 @@ export class UserService {
       timeTracked: 0,
       lockedOut: false
     }
-    return user;
+    
   }
 
 }

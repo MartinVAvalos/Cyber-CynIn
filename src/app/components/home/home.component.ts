@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FireService } from '../services/fire.service';
 import { User } from '../models/User';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private fire:FireService,
+   
+    
   ) {
     // this.testString="hello";
     // this.user.name="testName";
@@ -24,6 +28,6 @@ export class HomeComponent implements OnInit {
   }
 
   test(){
-    this.fire.storeServers(this.user);
+    
   }
 }

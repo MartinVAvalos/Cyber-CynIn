@@ -1,11 +1,17 @@
-<div class="container">
-    <div class="user col-12">
-        <div class="name">Emanuel Esgae <span class="time">12:30pm</span></div>
+<div *ngIf="Display.length>0;else noOmni" class="container">
+
+
+
+    <div *ngFor="let item of Display" class="user col-12">
+        <div class="name">{{item}}</div>
     </div>
-    <div class="user col-12">
-        <div class="name">Emanuel Esgae <span class="time">12:30pm</span></div>
-    </div>
-    
-   
+
+
+    <!-- <div class="user col-12">
+        <div class="name">Martin Esgae <span class="time">12:30pm</span></div>
+    </div> -->
     
 </div>
+<ng-template #noOmni>
+    <h1>Nothing to see here </h1>
+</ng-template>
