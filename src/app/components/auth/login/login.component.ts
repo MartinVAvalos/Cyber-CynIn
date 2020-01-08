@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
-    // this.auth.loginUser(this.htmlEmail, this.htmlPassword);
-    
-    //Login through firebase
     this.auth.loginUser(this.htmlEmail, this.htmlPassword);
   }
   

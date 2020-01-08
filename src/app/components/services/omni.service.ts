@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Omni } from '../models/Omni';
+import { Omni } from "../models/Omni";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,10 @@ export class OmniService {
 
   }
   dummy():Omni{
-    return this.omni={
+    return this.omni ={
       nameAnTimeArray:[]
     }
+    
   }
 
 

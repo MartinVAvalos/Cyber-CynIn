@@ -6,7 +6,7 @@ import { User } from '../models/User';
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
-import { Omni } from '../models/Omni';
+import { Omni } from "../models/Omni";
 
 @Injectable()
 export class FireService {

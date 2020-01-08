@@ -5,7 +5,7 @@ import { User } from '../models/User';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { OmniService } from '../services/omni.service';
-import { Omni } from '../models/Omni';
+import { Omni } from "../models/Omni";
 
 
 @Component({
@@ -21,16 +21,18 @@ export class UserProfileComponent implements OnInit {
   timeforToday: number = 0;
   display: string;
   display2: string;
-
-
+  buttondisabled:boolean=false;
+  
 
   constructor(
     private fire: FireService,
     private useServ: UserService,
     private router: Router,
-    private homeInfo:OmniService
+    private homeInfo:OmniService,
+    private empty:OmniService
   ) {
     this.homeInfo.dummy();
+    this.empty.dummy();
   }
 
   ngOnInit() {
@@ -38,6 +40,9 @@ export class UserProfileComponent implements OnInit {
     this.fire.getfromServers()
       .subscribe(
         (server: User) => {
+          if(server.timeIn){
+            this.buttondisabled=true
+          }
           this.user = server;
           this.display = this.myconvert(this.user.totalTime);
           this.currentDisplayingTotal(this.user.timeIn);
@@ -50,8 +55,6 @@ export class UserProfileComponent implements OnInit {
 
   onStartClock() {
     let time = this.createClock();
-
-
     this.fire.getfromServers()
       .subscribe(
         (server: User) => {
@@ -84,8 +87,7 @@ export class UserProfileComponent implements OnInit {
     let time2:number = this.createClock();
 
     this.fire.getfromServers()
-      .subscribe( // loading user from fire service
-        (server: User) => {
+      .subscribe((server: User) => {
           this.user = server;
           // finding the difference in time
           
@@ -96,7 +98,12 @@ export class UserProfileComponent implements OnInit {
           this.jar = this.user.totalTime;
           this.user.totalTime = this.jar + this.timeforToday;
           this.user.timeIn = 0;
-
+          if((this.user.totalTime%1000)%100 >=60){
+            let dec=(this.user.totalTime%1000)%100;
+            let whole=Math.floor(this.user.totalTime/100);
+            whole= whole*100;
+            this.user.totalTime=dec+whole;
+          }
           this.fire.storeServers(this.user)
             .subscribe(
               (response) => {
@@ -116,9 +123,10 @@ export class UserProfileComponent implements OnInit {
 
   myconvert(numTime: number): string {
     numTime = numTime / 100;
+      //  19 : 38
     if (numTime >= 13) {
       numTime = numTime - 12;
-
+      //  7.38
       let mystring = numTime + " Hrs";
       mystring = mystring.replace('.', ':');
 
@@ -155,9 +163,31 @@ export class UserProfileComponent implements OnInit {
     
   }
   homeStuff(time){
-    this.homeInfo.omni.nameAnTimeArray.push(this.user.firstName + "   "+ time.toString());
-    this.sendingInfoToOmniFire(this.homeInfo.omni);
-    return true;
+    this.fire.getOmni()
+      .subscribe((OmnidataComingBack: Omni) => {
+        console.log("This is whats coming back"+OmnidataComingBack);
+//         // need to make sure response is not empty
+    if(OmnidataComingBack === null){
+         this.homeInfo.omni.nameAnTimeArray=[];
+         this.homeInfo.omni.nameAnTimeArray.push(this.user.firstName + "   "+ time.toString());
+         console.log("made it to the if statement")
+         this.sendingInfoToOmniFire(this.homeInfo.omni);
+        
+         }
+        else{
+        this.homeInfo.omni.nameAnTimeArray=OmnidataComingBack.nameAnTimeArray;
+        this.homeInfo.omni.nameAnTimeArray.push(this.user.firstName + "   "+ time.toString());
+        this.sendingInfoToOmniFire(this.homeInfo.omni);
+        
+        }
+
+        return true;
+
+     });
+    // this.homeInfo.omni.nameAnTimeArray.push(this.user.firstName + "   "+ time.toString());
+    // this.sendingInfoToOmniFire(this.homeInfo.omni);
+    // return true;
+    
   }
 
 }

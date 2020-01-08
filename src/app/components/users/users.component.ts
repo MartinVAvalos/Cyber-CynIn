@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OmniService } from '../services/omni.service';
 import { FireService } from '../services/fire.service';
+import { Omni } from '../models/Omni';
 
 @Component({
   selector: 'app-users',
@@ -23,22 +24,24 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.populateUsers();
 
-    // if(this.displayUsers.omni.nameAnTimeArray.length>0){
-    //   this.Display=this.displayUsers.omni.nameAnTimeArray;
-
-    // }
-    // else{
-    //   this.Display.push(null);
-    // }
   }
 
   populateUsers() {
     this.fire.getOmni()
-    .subscribe(
-      (omniDisplayUsers) => {
-        console.log("Hello World \n" + omniDisplayUsers)
-        this.Display = omniDisplayUsers.nameAnTimeArray;
-        return true;
+    .subscribe((omniDisplayUsers:Omni) => {
+      
+        if(omniDisplayUsers.nameAnTimeArray===null || omniDisplayUsers.nameAnTimeArray.length===0){
+          omniDisplayUsers.nameAnTimeArray=[];
+          this.Display = omniDisplayUsers.nameAnTimeArray;
+          console.log("Im in the if block");
+          return true;
+        }
+        else{
+          console.log("Im in the else block");
+          this.Display = omniDisplayUsers.nameAnTimeArray;
+          return true;
+        }
+       
       }
     )
   }
