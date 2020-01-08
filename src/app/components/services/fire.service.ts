@@ -6,6 +6,7 @@ import { User } from '../models/User';
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
+import { Omni } from "../models/Omni";
 
 @Injectable()
 export class FireService {
@@ -34,7 +35,27 @@ export class FireService {
       .map(
         (response: Response) => {
           const data = response.json();
-          
+          return data;
+        }
+      )
+      .catch(
+        (error: Response) => {
+          return Observable.throw(console.log("something wrong with fetching data error => " + Response));
+        }
+      );
+  }
+
+  OmniSaving(servers: Omni) {
+  //this.uidFromUser.getUID() this goes between url and /data.json
+  return this.http.put(this.url + 'Omni' + '/data.json', servers);
+  }
+
+  getOmni() {
+    //this.uidFromUser.getUID() this goes between url and /data.json
+    return this.http.get(this.url + 'Omni' + '/data.json')
+      .map(
+        (response: Response) => {
+          const data = response.json();
           return data;
         }
       )

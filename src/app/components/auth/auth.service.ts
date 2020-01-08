@@ -18,18 +18,14 @@ export class AuthService {
    // studentID: string, fName: string, lName: string GOES IN MEthod
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-        // .then(
-
-        // )
         .catch (
-            error => console.log(error)
+            error => console.log("problem while creating User "+error)
         );
     };
 
     loginUser(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(
-            response => {
+        .then(response => {
                 // implement tokens
                 //Future: fix-time~ admin needed
                 this.router.navigate(['/userProfile']);
@@ -55,7 +51,5 @@ export class AuthService {
 
     }
 
-    // getToken() {
 
-    // }
 }

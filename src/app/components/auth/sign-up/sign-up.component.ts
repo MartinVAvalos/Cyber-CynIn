@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     public userServ: UserService
   ) {
-    this.user = userServ.dummyModel(this.user);
+    this.user = userServ.dummyModel();
     // initialize variables then use them
 
 
@@ -50,7 +50,7 @@ export class SignUpComponent implements OnInit {
     setTimeout(() => {
       this.getNewInfo();
       this.begin();
-    }, 1000);
+    }, 3000);
 
   }
 
@@ -58,12 +58,11 @@ export class SignUpComponent implements OnInit {
   begin() {
     console.log("starting");
     this.fire.storeServers(this.user)
-      .subscribe(
-        (response) => {
+      .subscribe(() => {
           console.log("save complete!");
           this.router.navigate(['/login']);
         },
-        (error) => console.log(error)
+        (error) => console.log("Problem while loging in "+error)
       );
   }
 
