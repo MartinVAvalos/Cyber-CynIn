@@ -1,15 +1,9 @@
-<div *ngIf="Display.length>0;else noOmni" class="container">
+<div *ngIf="Display.length>0;else noOmni" class="mainContainer">
 
-
-
-    <div *ngFor="let item of Display" class="user col-12">
+    <div *ngFor="let item of Display" class="user">
         <div class="name">{{item}}</div>
     </div>
 
-
-    <!-- <div class="user col-12">
-        <div class="name">Martin Esgae <span class="time">12:30pm</span></div>
-    </div> -->
     
 </div>
 <ng-template #noOmni>

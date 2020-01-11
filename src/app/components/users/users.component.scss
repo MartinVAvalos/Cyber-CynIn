@@ -5,7 +5,7 @@ $secondaryVariant: #323232 !default;
 // $secondary: #b62417 !default;
 // $secondaryVariant: #ffced1 !default;
 
-.user {
+ .user {
     background: rgba($secondary, .8);
     box-shadow: 1px 2px 3px 2px rgba($secondary, .2);
     font-size: 1.5em;
@@ -14,12 +14,15 @@ $secondaryVariant: #323232 !default;
     border-radius: 30px;
     padding: 0 15px 0 15px;
     margin: 8px;
+    overflow: hidden;
+    width: 85%;
 }
 
-// .name {
 
-// }
+.name {
+    display: inline;
+}
 
-.time {
-    float: right;
+.mainContainer{
+    height: 50%;
 }

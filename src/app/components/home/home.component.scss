@@ -37,10 +37,13 @@ $secondaryVariant: #323232 !default;
     // background-color: $secondaryVariant;
 }
 
-.container-fluid {
-    height: 250%;
+.mycontainer{
+    height: 50vh;
+    width: 60vh;
     padding: 20px;
     background: $primary;
     border: 2px groove $secondary;
     border-radius: 25px;
+    overflow:auto;
+    position: absolute;
 }
